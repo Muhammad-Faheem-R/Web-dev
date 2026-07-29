@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="todo-app">
+    <h1>To-Do List</h1>
+
+    <!-- Input row: type a task, then click Add (or press Enter) -->
+    <div class="input-row">
+      <input type="text" id="taskInput" placeholder="What needs to be done?">
+      <button id="addBtn">Add</button>
+    </div>
+
+    <!-- Tasks get appended here dynamically by JS -->
+    <ul id="taskList" class="task-list"></ul>
+
+    <p id="emptyMessage" class="empty-message">No tasks yet. Add one above!</p>
+  </main>
+
+  <!-- Script goes at the end so the DOM exists before JS runs -->
+  <script src="script.js"></script>
+</body>
+</html>
