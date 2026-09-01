@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- The viewport tag is what allows media queries to work at all on
+       real phones. Without it, mobile browsers fake a ~980px wide
+       screen and just zoom out, so @media rules based on real width
+       never trigger. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Company Site - Mobile-Friendly Demo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Nav starts as a fixed-width horizontal bar (desktop assumption) -->
+  <header class="site-header">
+    <div class="nav-bar">
+      <div class="logo">AcmeCo</div>
+      <nav class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Services</a>
+        <a href="#">Portfolio</a>
+        <a href="#">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- A 3-column layout that was originally built with fixed pixel widths -->
+  <main class="content">
+    <section class="card">
+      <img src="https://picsum.photos/400/250?1" alt="Placeholder graphic 1">
+      <h2>Web Design</h2>
+      <p>We build fast, modern websites tailored to your business needs and goals.</p>
+    </section>
+
+    <section class="card">
+      <img src="https://picsum.photos/400/250?2" alt="Placeholder graphic 2">
+      <h2>Branding</h2>
+      <p>Consistent, memorable visual identity across every customer touchpoint.</p>
+    </section>
+
+    <section class="card">
+      <img src="https://picsum.photos/400/250?3" alt="Placeholder graphic 3">
+      <h2>Marketing</h2>
+      <p>Data-driven campaigns that grow your audience and convert visitors.</p>
+    </section>
+  </main>
+
+  <!-- A wide data table — a classic mobile overflow problem -->
+  <section class="table-wrapper">
+    <h2>Pricing</h2>
+    <table>
+      <thead>
+        <tr><th>Plan</th><th>Price</th><th>Users</th><th>Storage</th><th>Support</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Basic</td><td>$9/mo</td><td>1</td><td>5GB</td><td>Email</td></tr>
+        <tr><td>Pro</td><td>$29/mo</td><td>5</td><td>50GB</td><td>Priority</td></tr>
+        <tr><td>Enterprise</td><td>$99/mo</td><td>Unlimited</td><td>1TB</td><td>24/7</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 AcmeCo</p>
+  </footer>
+
+</body>
+</html>

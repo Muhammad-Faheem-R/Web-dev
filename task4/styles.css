@@ -1,0 +1,185 @@
+/* =========================================================
+   PART A: THE "DESKTOP-ONLY" BASE STYLES
+   This is what an existing site often looks like before anyone
+   thought about phones: fixed pixel widths, horizontal nav,
+   multi-column layout with no wrapping.
+   These rules apply to EVERY screen size unless overridden below.
+========================================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #1f2937;
+}
+
+/* --- Header / Nav (desktop assumption: plenty of horizontal space) --- */
+.site-header {
+  background-color: #0f172a;
+  padding: 16px 0;
+}
+
+.nav-bar {
+  width: 960px;       /* PROBLEM: fixed width causes horizontal scroll on phones */
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.nav-links a {
+  color: #cbd5e1;
+  text-decoration: none;
+  margin-left: 24px;
+  font-size: 1rem;
+}
+
+/* --- Content: 3 fixed-width cards side by side --- */
+.content {
+  width: 960px;        /* PROBLEM: same fixed-width issue */
+  margin: 40px auto;
+  display: flex;
+  gap: 20px;
+}
+
+.card {
+  width: 300px;         /* PROBLEM: fixed width, doesn't shrink */
+  flex-shrink: 0;        /* PROBLEM: explicitly forbids shrinking */
+}
+
+.card img {
+  width: 400px;          /* PROBLEM: image wider than its own card! */
+  height: auto;
+  border-radius: 6px;
+}
+
+.card h2 {
+  margin: 12px 0 6px;
+  font-size: 1.2rem;
+}
+
+.card p {
+  font-size: 0.95rem;
+  color: #4b5563;
+}
+
+/* --- Pricing table: naturally wide, easy to overflow on phones --- */
+.table-wrapper {
+  width: 960px;
+  margin: 40px auto;
+}
+
+.table-wrapper h2 {
+  margin-bottom: 12px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #e2e8f0;
+  padding: 10px 14px;
+  text-align: left;
+  white-space: nowrap; /* keeps columns from wrapping, common desktop habit */
+}
+
+.site-footer {
+  text-align: center;
+  padding: 20px;
+  color: #6b7280;
+}
+
+
+/* =========================================================
+   PART B: MOBILE-FRIENDLY FIXES (Media Queries)
+
+   Everything below only applies when the screen is 768px wide
+   or less. This is "desktop-first": we wrote the wide-screen
+   styles first, then override just what breaks on small screens.
+   (The opposite approach, "mobile-first", writes the small-screen
+   styles as the default and uses min-width queries to ADD
+   complexity for bigger screens — see the interview answer below.)
+========================================================= */
+@media (max-width: 768px) {
+
+  /* FIX 1: replace fixed pixel widths with fluid ones.
+     100% (of the parent, here <body>) lets these sections
+     shrink and grow with the actual screen size instead of
+     forcing horizontal scrolling. */
+  .nav-bar,
+  .content,
+  .table-wrapper {
+    width: 100%;
+    padding: 0 16px;
+  }
+
+  /* FIX 2: stack the nav vertically and let links wrap,
+     since there's no longer room for everything in one row. */
+  .nav-bar {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .nav-links a {
+    margin: 0 10px;
+  }
+
+  /* FIX 3: stack the 3 cards vertically instead of side-by-side.
+     flex-direction: column turns the flex row into a column;
+     each card now takes the full available width. */
+  .content {
+    flex-direction: column;
+  }
+
+  .card {
+    width: 100%;    /* was a fixed 300px */
+  }
+
+  /* FIX 4: THE most important image rule in responsive design.
+     max-width: 100% means "never grow wider than your container,"
+     while width: auto (or omitting width) preserves the image's
+     natural width up to that limit. height: auto keeps the aspect
+     ratio correct as the width changes. */
+  .card img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* FIX 5: slightly smaller headings so text doesn't dominate
+     a small screen. */
+  .card h2 {
+    font-size: 1.1rem;
+  }
+
+  /* FIX 6: let the pricing table scroll horizontally INSIDE its
+     own box instead of breaking the whole page's layout.
+     This is a common, honest compromise for data-heavy tables
+     that genuinely don't fit on a small screen. */
+  .table-wrapper {
+    overflow-x: auto;
+  }
+}
+
+/* An extra breakpoint for very small phones, showing you can
+   stack as many of these as you need. */
+@media (max-width: 400px) {
+  .logo {
+    font-size: 1.2rem;
+  }
+
+  .card p {
+    font-size: 0.9rem;
+  }
+}
