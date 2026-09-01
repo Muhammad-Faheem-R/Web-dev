@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="form-wrapper">
+    <h1>Contact Us</h1>
+
+    <!-- novalidate turns OFF the browser's built-in popup validation
+         so we can fully control validation and messages with our own JS.
+         (See interview Q10 for how the two compare.) -->
+    <form id="contactForm" novalidate>
+
+      <div class="field">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name">
+        <span class="error-message" id="nameError"></span>
+      </div>
+
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email">
+        <span class="error-message" id="emailError"></span>
+      </div>
+
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5"></textarea>
+        <span class="error-message" id="messageError"></span>
+      </div>
+
+      <button type="submit">Send Message</button>
+
+      <!-- Shown only after a fully valid submission -->
+      <p id="successMessage" class="success-message hidden">
+        ✓ Thanks! Your message has been sent.
+      </p>
+    </form>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
