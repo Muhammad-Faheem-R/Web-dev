@@ -1,0 +1,225 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: #f1f5f9;
+  color: #1f2937;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ===== HEADER ===== */
+.site-header {
+  background: linear-gradient(135deg, #1d4ed8, #0f172a);
+  color: #fff;
+  padding: 40px 0;
+}
+
+.header-inner h1 {
+  font-size: 1.8rem;
+  margin-bottom: 6px;
+}
+
+.header-inner p {
+  color: #dbeafe;
+  font-size: 0.95rem;
+}
+
+/* ===== SEARCH CONTROLS ===== */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 24px 0 8px;
+}
+
+#searchInput {
+  flex: 1;
+  min-width: 200px;
+  padding: 10px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+select {
+  padding: 10px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  background-color: #fff;
+}
+
+#searchBtn {
+  padding: 10px 22px;
+  background-color: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#searchBtn:hover {
+  background-color: #1d4ed8;
+}
+
+.status-message {
+  min-height: 1.2em;
+  font-size: 0.9rem;
+  color: #64748b;
+  margin-bottom: 12px;
+}
+
+.status-message.error {
+  color: #dc2626;
+}
+
+/* ===== TABS ===== */
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.tab-btn {
+  padding: 10px 16px;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #64748b;
+  cursor: pointer;
+}
+
+.tab-btn.active {
+  color: #1d4ed8;
+  border-bottom-color: #1d4ed8;
+}
+
+/* ===== CHART ===== */
+.chart-section {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+}
+
+.chart-section h2 {
+  font-size: 1.05rem;
+  margin-bottom: 14px;
+  color: #334155;
+}
+
+/* ===== REPO GRID / CARDS ===== */
+.repo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+  padding-bottom: 40px;
+}
+
+.repo-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 18px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.repo-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.repo-name {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #1d4ed8;
+  text-decoration: none;
+  word-break: break-word;
+}
+
+.repo-name:hover {
+  text-decoration: underline;
+}
+
+.bookmark-btn {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: #cbd5e1;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+/* Filled star style, toggled on via JS when bookmarked */
+.bookmark-btn.bookmarked {
+  color: #facc15;
+}
+
+.repo-description {
+  font-size: 0.88rem;
+  color: #475569;
+  margin-bottom: 12px;
+  flex-grow: 1;
+}
+
+.repo-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.8rem;
+  color: #64748b;
+  margin-bottom: 10px;
+}
+
+.repo-note {
+  width: 100%;
+  min-height: 50px;
+  padding: 8px 10px;
+  font-size: 0.82rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: #94a3b8;
+  padding: 40px 0;
+}
+
+.hidden {
+  display: none;
+}
+
+/* ===== RESPONSIVENESS ===== */
+@media (max-width: 600px) {
+  .controls {
+    flex-direction: column;
+  }
+
+  select,
+  #searchBtn {
+    width: 100%;
+  }
+}

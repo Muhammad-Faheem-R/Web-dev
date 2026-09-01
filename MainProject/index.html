@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub Project Explorer</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Chart.js from a CDN — used to draw the language distribution bar chart.
+       We don't need to install anything for this since it's just a script tag. -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <h1>🔍 GitHub Project Explorer</h1>
+      <p>Search, filter, and bookmark public repositories using the GitHub REST API</p>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- ===== SEARCH & FILTER CONTROLS ===== -->
+    <section class="controls" id="controls">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search repos (e.g. react, machine learning)..."
+      >
+
+      <select id="languageFilter">
+        <option value="">All Languages</option>
+        <option value="javascript">JavaScript</option>
+        <option value="python">Python</option>
+        <option value="typescript">TypeScript</option>
+        <option value="java">Java</option>
+        <option value="go">Go</option>
+        <option value="c++">C++</option>
+        <option value="rust">Rust</option>
+      </select>
+
+      <select id="sortBy">
+        <option value="stars">Sort: Most Stars</option>
+        <option value="updated">Sort: Recently Updated</option>
+        <option value="forks">Sort: Most Forks</option>
+      </select>
+
+      <button id="searchBtn">Search</button>
+    </section>
+
+    <!-- Status line: shows loading / error / result count -->
+    <p id="statusMessage" class="status-message"></p>
+
+    <!-- ===== TABS: Results vs Bookmarks ===== -->
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="results">Results</button>
+      <button class="tab-btn" data-tab="bookmarks">
+        Bookmarks (<span id="bookmarkCount">0</span>)
+      </button>
+    </div>
+
+    <!-- ===== CHART: language distribution of current results ===== -->
+    <section class="chart-section" id="chartSection" hidden>
+      <h2>Languages in this search</h2>
+      <canvas id="languageChart" height="90"></canvas>
+    </section>
+
+    <!-- ===== RESULTS TAB ===== -->
+    <section class="repo-grid" id="resultsTab"></section>
+
+    <!-- ===== BOOKMARKS TAB (hidden by default) ===== -->
+    <section class="repo-grid hidden" id="bookmarksTab"></section>
+
+  </main>
+
+  <!-- A reusable <template> for one repo card. Cloning this in JS keeps
+       script.js free of big HTML strings, which is easier to read and edit. -->
+  <template id="repoCardTemplate">
+    <article class="repo-card">
+      <div class="repo-card-header">
+        <a class="repo-name" target="_blank" rel="noopener"></a>
+        <button class="bookmark-btn" title="Bookmark this repo">☆</button>
+      </div>
+      <p class="repo-description"></p>
+      <div class="repo-meta">
+        <span class="repo-language"></span>
+        <span class="repo-stars">⭐ <span class="stars-count"></span></span>
+        <span class="repo-forks">🍴 <span class="forks-count"></span></span>
+        <span class="repo-updated"></span>
+      </div>
+      <textarea class="repo-note" placeholder="Add a private note about this repo..."></textarea>
+    </article>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
